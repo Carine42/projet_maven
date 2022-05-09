@@ -26,6 +26,14 @@ pipeline {
           }
         }
 
+        stage('Fonctional') {
+          steps {
+            echo 'Debut fonctionnel'
+            bat 'mvn -Dtest="com.example.testingweb.functional.**" test'
+            echo 'fin fonctional'
+          }
+        }
+
       }
     }
 

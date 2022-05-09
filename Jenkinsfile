@@ -6,6 +6,7 @@ pipeline {
         echo 'La construction a dÃƒÂ©marrÃƒÂ©'
         bat 'mvn -B -DskipTests clean package'
         echo 'Construction terminÃ©e'
+        archiveArtifacts '**/target/*.jar'
       }
     }
 

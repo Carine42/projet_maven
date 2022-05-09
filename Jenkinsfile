@@ -40,6 +40,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Debut deploy'
+        bat 'mvn -B -DskipTests install'
       }
     }
 

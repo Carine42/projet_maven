@@ -5,6 +5,7 @@ pipeline {
       steps {
         echo 'La construction a démarré'
         bat 'mvn -B -DskipTests clean package'
+        echo 'Construction termin�e'
       }
     }
 

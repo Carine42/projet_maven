@@ -11,7 +11,7 @@ pipeline {
 
     stage('Test') {
       parallel {
-        stage('Test') {
+        stage('Unit') {
           steps {
             echo 'test va démarré'
             bat 'mvn -Dtest="com.example.testingweb.smoke.**" test'

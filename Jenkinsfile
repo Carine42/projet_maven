@@ -15,6 +15,7 @@ pipeline {
           steps {
             echo 'test va démarré'
             bat 'mvn -Dtest="com.example.testingweb.smoke.**" test'
+            junit '**/target/surefire-reports/TEST-*.xml'
           }
         }
 

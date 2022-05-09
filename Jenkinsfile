@@ -3,16 +3,29 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'La construction a dÃ©marrÃ©'
+        echo 'La construction a dÃƒÂ©marrÃƒÂ©'
         bat 'mvn -B -DskipTests clean package'
-        echo 'Construction terminée'
+        echo 'Construction terminÃ©e'
       }
     }
 
     stage('Test') {
-      steps {
-        echo 'test va d�marr�'
-        bat 'mvn -Dtest="com.example.testingweb.smoke.**" test'
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'test va démarré'
+            bat 'mvn -Dtest="com.example.testingweb.smoke.**" test'
+          }
+        }
+
+        stage('Integration') {
+          steps {
+            echo 'Integration commence'
+            bat 'mvn -Dtest="com.example.testingweb.integration.**" test'
+            echo 'Integration termine'
+          }
+        }
+
       }
     }
 
